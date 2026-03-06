@@ -11,34 +11,30 @@ export default async function handler(req, res) {
       });
     }
 
-    const response = await axios.post(
-      "https://www.tikwm.com/api/user/posts",
-      new URLSearchParams({
+    const response = await axios({
+      method: "POST",
+      url: "https://www.tikwm.com/api/user/posts",
+      headers: {
+        "accept": "application/json, text/javascript, */*",
+        "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+        "origin": "https://www.tikwm.com",
+        "referer": "https://www.tikwm.com/",
+        "x-requested-with": "XMLHttpRequest",
+        "user-agent":
+          "Mozilla/5.0 (Linux; Android 11; TECNO KF6p) AppleWebKit/537.36 Chrome/137.0.0.0 Mobile Safari/537.36",
+
+        // important
+        "cookie":
+          "current_language=en"
+      },
+      data: new URLSearchParams({
         unique_id: username,
         count: count,
         cursor: cursor
-      }).toString(),
-      {
-        headers: {
-          "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
-          "accept": "application/json, text/javascript, */*",
-          "origin": "https://www.tikwm.com",
-          "referer": "https://www.tikwm.com/",
-          "x-requested-with": "XMLHttpRequest",
-          "user-agent":
-            "Mozilla/5.0 (Linux; Android 11; TECNO KF6p) AppleWebKit/537.36 Chrome/137.0.0.0 Mobile Safari/537.36"
-        }
-      }
-    );
+      })
+    });
 
     const data = response.data;
-
-    if (!data || !data.data) {
-      return res.json({
-        status: false,
-        message: "No data returned"
-      });
-    }
 
     const videos = data.data.videos.map(v => ({
       id: v.video_id,
@@ -57,10 +53,10 @@ export default async function handler(req, res) {
       videos
     });
 
-  } catch (err) {
+  } catch (error) {
     res.status(500).json({
       status: false,
-      error: err.message
+      error: error.message
     });
   }
 }
