@@ -1,19 +1,8 @@
 {
   "name": "denish-tiktok-api",
   "version": "1.0.0",
-  "description": "TikTok Downloader API by Denish",
-  "main": "index.js",
   "type": "module",
-  "scripts": {
-    "start": "node index.js"
-  },
-  "keywords": [
-    "tiktok",
-    "api",
-    "downloader",
-    "vercel"
-  ],
-  "author": "Denish",
-  "license": "MIT",
-  "dependencies": {}
+  "dependencies": {
+    "axios": "^1.6.0"
+  }
 }
