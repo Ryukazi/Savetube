@@ -1,8 +1,9 @@
 {
-  "name": "dens-savetube",
+  "name": "denish-yt-api",
   "version": "1.0.0",
+  "description": "YouTube downloader API",
   "type": "module",
   "dependencies": {
-    "axios": "^1.6.0"
+    "axios": "^1.6.7"
   }
 }
