@@ -1,8 +1,6 @@
 {
-  "name": "denish-youtube-api",
+  "name": "denish-y2down-api",
   "version": "1.0.0",
-  "description": "YouTube downloader API",
-  "main": "api/youtube.js",
   "type": "module",
   "dependencies": {
     "axios": "^1.6.0"
